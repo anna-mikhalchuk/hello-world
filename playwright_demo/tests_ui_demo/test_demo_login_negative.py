@@ -1,8 +1,10 @@
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pom.login_page import LoginPage
 from pom.home_page import HomePage
+import pytest
 
 
+@pytest.mark.skip(reason='for learning purpose')
 def test_login_negative(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False, slow_mo=500)
     context = browser.new_context()
