@@ -20,15 +20,14 @@ def test_login(playwright: Playwright) -> None:
 
     home_page = HomePage(page)
 
+    # Check the login button is not displayed
     expect(login_page.login_button).to_be_hidden()
     # print("The user is successfully logged in. Login button is hidden.")
+
+    # Check the shopping cart is now available
     expect(home_page.shopping_cart_link).to_be_visible()
     # print("The user is successfully logged in. Shopping cart icon appears.")
 
-    # ---------------------
+    # Clean up
     context.close()
     browser.close()
-
-
-# with sync_playwright() as playwright:
-#     run(playwright)
