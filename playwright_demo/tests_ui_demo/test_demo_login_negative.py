@@ -1,4 +1,3 @@
-import re
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pom.login_page import LoginPage
 from pom.home_page import HomePage
