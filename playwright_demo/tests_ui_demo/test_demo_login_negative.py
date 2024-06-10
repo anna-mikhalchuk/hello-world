@@ -21,13 +21,15 @@ def test_login_negative(playwright: Playwright) -> None:
 
     home_page = HomePage(page)
 
-    expect(login_page.login_alert).to_have_text(re.compile("Username and password do not match any user in this service"))
-    print("The user was not logged in. Proper error message appears.")
+    # Check for an exact match of the error message ???
+    error_message = "Epic sadface: Username and password do not match any user in this service"
+    expect(login_page.login_alert).to_have_text(error_message)
+    # print("Proper error message appears.")
+
+    # Check that the shopping cart icon is not visible
     expect(home_page.shopping_cart_link).to_be_hidden()
-    print("The user was not logged in. Shopping cart icon did not appear.")
+    # print("The user was not logged in. Shopping cart icon did not appear.")
 
-    # page.pause()
-
-    # ---------------------
+    # Clean up
     context.close()
     browser.close()
