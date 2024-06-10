@@ -2,6 +2,19 @@ from playwright.sync_api import Playwright, expect
 from pom.login_page import LoginPage
 from pom.home_page import HomePage
 
+def test_check_page_is_open(playwright: Playwright) -> None:
+
+    browser = playwright.chromium.launch(headless=False, slow_mo=500)
+    context = browser.new_context()
+    page = context.new_page()
+    page.set_default_timeout(5000)
+    response = page.request.get('https://www.saucedemo.com/')
+    expect(response).to_be_ok()
+
+    # Clean up
+    context.close()
+    browser.close()
+
 
 def test_login(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False, slow_mo=500)
