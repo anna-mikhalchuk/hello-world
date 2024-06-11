@@ -1,7 +1,10 @@
 from playwright.sync_api import Playwright, expect
 from pom.login_page import LoginPage
 from pom.home_page import HomePage
+import pytest
 
+
+@pytest.mark.smoke(reason='learning purpose')
 def test_check_page_is_open(playwright: Playwright) -> None:
 
     browser = playwright.chromium.launch(headless=False, slow_mo=500)
